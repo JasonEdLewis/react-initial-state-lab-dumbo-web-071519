@@ -12,27 +12,25 @@ export default class Bomb extends React.Component{
         const newtime = this.state.secondsLeft -1 
         this.setState({
             secondsLeft: newtime
-        })
-        return this.state.secondsLeft
+        
+        } )
+    }  
+    timeLeft(){
+    this.countDown();
+        if(this.state.secondsLeft !== 0){
+        return <div>There are {this.state.secondsLeft}seconds left!</div>
         }
-        message (){
-            countDown()
-            if(this.state.secondsLeft !== 0){
-                return `${this.state.secondsLeft} seconds left before I go boom!`
-            }
-            else{
-                return 'Boom!!'
+        else{
+            return <div>Boom!</div>
         }
     }
-            const ticToc = (){ setInterval(function(){
-                return message()
+    ticToc =()=>{
+    setInterval(this.timeLeft(), 2000)
+    }
 
-            },1000)
-        }
-        
     render(){
         return ( 
-            
+            this.ticToc()
         )
     }
 }
